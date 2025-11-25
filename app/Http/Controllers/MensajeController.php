@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use App\Models\Message;
 
 class MensajeController extends Controller
 {
@@ -42,14 +43,13 @@ class MensajeController extends Controller
             'mensaje' => 'required|string|max:500',
         ]);
 
-        $linea = '"' . $datos['nombre'] . '";"' . $datos['email'] . '";"' . $datos['mensaje'] . "\"\n";
-
-        /*
-        Con storage_path obtenemos la ruta absoluta del directorio storage/ dentro del proyecto. Esto es útil porque Laravel no asume directamente que puedas escribir en cualquier parte del sistema de archivos (por seguridad y buenas prácticas).
-        Laravel tiene una carpeta especial llamada storage/ para guardar archivos generados por la aplicación
-        Dentro de storage/ suele haber un subdirectorio llamado app/, que es ideal para guardar este tipo de ficheros de trabajo. Pero si usas simplemente un nombre de archivo como "mensajes.csv", Laravel lo buscará o creará en la raíz del proyecto o según el path desde donde se ejecute el script, lo que puede generar errores inesperados o problemas de permisos.
-        */
-        file_put_contents(storage_path('app/mensajes.csv'), $linea, FILE_APPEND);
+        // Crear una nueva instancia del modelo Message
+        $mensaje = new Message();   
+        $mensaje->name = $datos['nombre'];
+        $mensaje->email = $datos['email'];
+        $mensaje->message = $datos['mensaje'];
+        // Guardar el mensaje en la base de datos
+        $mensaje->save();                     
 
         // Redirigimos de vuelta al formulario con un mensaje de éxito. Es un helper de Laravel que crea una respuesta de redirección. Es un helper de Laravel que crea una respuesta de redirección.
         // with('status', '...') añade un dato temporal a la sesión que estará disponible solo en la siguiente solicitud. Este dato se conoce como mensaje flash.
