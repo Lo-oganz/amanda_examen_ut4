@@ -325,7 +325,7 @@ return [
            'url' => 'admin/users/create',
            'icon' => 'fas fa-fw fa-user-plus',
        ],
-
+//Los apartados que he añadido en el menú de navegación lateral
        [
            'text' => 'Registrar Estudiante',
            'url' => 'admin/students/create',
@@ -337,7 +337,7 @@ return [
            'url' => 'admin/students/index',
            'icon' => 'fas fa-fw fa-users',
        ],
-
+//Hasta aquí
         [
             'text' => 'blog',
             'url' => 'admin/blog',

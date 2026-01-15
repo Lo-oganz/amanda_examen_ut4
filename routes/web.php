@@ -32,6 +32,7 @@ Route::middleware(['auth'
    Route::post('/admin/users/store', [App\Http\Controllers\Admin\UserController::class, 'store']
    )->name('admin.users.store');
 
+   //Mis rutas: La de creación de estudiante, la de guardado y la de mostrar todas las calificaciones
    Route::get('/admin/students/create', [EstudianteController::class, 'create'])
     ->name('admin.students.create');
 
