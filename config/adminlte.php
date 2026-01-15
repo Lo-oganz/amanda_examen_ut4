@@ -63,8 +63,8 @@ return [
     |
     */
 
-    'logo' => '<b>Sergio</b>Admin',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => '<b>Examen Final</b>Admin',
+    'logo_img' => 'img/logo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -324,6 +324,18 @@ return [
            'text' => 'Crear Usuario',
            'url' => 'admin/users/create',
            'icon' => 'fas fa-fw fa-user-plus',
+       ],
+
+       [
+           'text' => 'Registrar Estudiante',
+           'url' => 'admin/students/create',
+           'icon' => 'fas fa-fw fa-plus',
+       ],
+
+       [
+           'text' => 'Ver Calificaciones',
+           'url' => 'admin/students/index',
+           'icon' => 'fas fa-fw fa-users',
        ],
 
         [

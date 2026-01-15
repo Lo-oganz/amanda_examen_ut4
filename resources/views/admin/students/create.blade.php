@@ -1,0 +1,57 @@
+@extends('adminlte::page')
+
+@section('title', 'Registrar Estudiante')
+
+@section('content_header')
+    <h1>Registrar Estudiante</h1>
+@endsection
+
+@section('content')
+    <div class="card">
+        <div class="card-body">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            
+
+            <form action="{{ route('admin.students.store') }}" method="POST">
+                @csrf
+
+                <div class="form-group">
+                    <label for="name">Nombre:</label>
+                    <input type="text" name="name" class="form-control" value="{{ old('name') }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="module">Módulo:</label>
+                    <input type="text" name="module" class="form-control" value="{{ old('module') }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="score">Nota:</label>
+                    <input type="text" name="score" class="form-control" value="{{ old('score') }}" required>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Registrar Estudiante</button>
+                    <a href="" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </form>
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
+        </div>
+    </div>
+@endsection
