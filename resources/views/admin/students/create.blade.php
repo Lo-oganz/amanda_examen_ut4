@@ -25,6 +25,8 @@
                 @csrf
 
                 <div class="form-group">
+                    <!-- Traducción: -->
+                    <p>{{ __('SixSeven') }}</p>
                     <label for="name">Nombre:</label>
                     <input type="text" name="name" class="form-control" value="{{ old('name') }}" required>
                 </div>
